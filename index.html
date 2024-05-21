@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Page de Chargement</title>
+    <style>
+        /* Styles pour l'animation de chargement */
+        
+        @media (max-width:12000px) and (min-width:350px) {
+            .loader {
+                width: 60px;
+                height: 60px;
+                border: 6px solid #cfd8dc;
+                border-top: 6px solid #3498db;
+                border-radius: 50%;
+                animation: spin 1s linear infinite;
+                position: absolute;
+                top: calc(50% - 30px);
+                left: calc(50% - 30px);
+            }
+            /* Animation de l'animation de chargement */
+            @keyframes spin {
+                0% {
+                    transform: rotate(0deg);
+                }
+                100% {
+                    transform: rotate(360deg);
+                }
+            }
+            /* Styles pour le fond de la page */
+            body {
+                background: linear-gradient(180deg, #47cebe, #ef4aB2);
+                margin: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                min-height: 100vh;
+                perspective: 1000px;
+                font-family: Arial, sans-serif;
+                color: #ffffff;
+            }
+            /* Styles pour le conteneur principal */
+            .container {
+                text-align: center;
+            }
+            /* Styles pour le titre */
+            .title {
+                font-size: 180px;
+                font-weight: bold;
+                margin-bottom: 4vh;
+                position: relative;
+                animation: float 4s ease-in-out infinite;
+            }
+            /* Animation du titre flottant */
+            @keyframes float {
+                0%,
+                100% {
+                    transform: translate(0, 0);
+                }
+                25% {
+                    transform: translate(0, -5px);
+                }
+                50% {
+                    transform: translate(0, 0);
+                }
+                75% {
+                    transform: translate(0, 5px);
+                }
+            }
+            /* Styles pour la première partie du titre */
+            .title span {
+                color: #4caf50;
+            }
+            /* Styles pour la deuxième partie du titre */
+            .title span:last-child {
+                color: #3498db;
+            }
+            /* Styles pour le texte de chargement */
+            .loading-text {
+                font-size: 5px;
+                color: #ffffff;
+                margin-top: 2vh;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="title">S'embellir avec <span>Orly</span></h1>
+        <div class="loader"></div>
+        <p class="loading-text">Chargement en cours </p>
+        <p></p>
+    </div>
+    <script>
+        // Adapter la taille de police en fonction de la taille de la fenêtre
+        function adjustFontSize() {
+            const title = document.querySelector('.title');
+            const loadingText = document.querySelector('.loading-text');
+            const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+            const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
+            title.style.fontSize = `${vw * 0.06}px`;
+            loadingText.style.fontSize = `${vw * 0.02}px`;
+        }
+
+        // Appeler la fonction d'adaptation de la taille de police lors du chargement et du redimensionnement de la fenêtre
+        window.addEventListener('load', adjustFontSize);
+        window.addEventListener('resize', adjustFontSize);
+
+        // Attendre 3 secondes
+        setTimeout(function() {
+            // Rediriger vers la page meder.html
+            window.location.href = "connect.html";
+        }, 3000);
+    </script>
+</body>
+
+</html>
